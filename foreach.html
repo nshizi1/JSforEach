@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Syne:regular,500,600,700,800);
+        *{
+            font-family: 'Syne', sans-serif;
+        }
+        .colorBefore{
+            color: #064ACB;
+            font-size: 30px;
+            font-weight: 700;
+            transition: 1.5s cubic-bezier(1,.56,1,.99);
+        }
+        .colorAfter{
+            color: #F3A953;
+            font-size: 100px;
+            font-weight: 700;
+            transition: 3000ms ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>LOOPS</h1>
+    <h2>For each loop in JavaScript</h2>    
+    <p id="text"></p>
+    <span id="fruitsItem"></span>
+    <button onClick="showLoop()" id="showLoop">Show Loop</button>
+    <p id="hiddenText"></p>
+
+    <!-- colors -->
+
+    <p class="colorBefore" id="color">Hello colors</p>
+    <button onClick="color()">change color</button>
+</body>
+<script>
+    function showLoop() {
+
+        var text = document.getElementById("text");
+        text.innerHTML="Hello JavaScript Loops?";
+
+        var fruits = ["Mango", "Banana", "Grape", "Avocado", "Strawberry"];
+
+        var content = "";
+
+        fruits.forEach(fruit=>{
+            content+=fruit+"<br>";
+        });
+        var fruitsItem = document.getElementById("fruitsItem").innerHTML=content;
+
+        var showLoop = document.getElementById("showLoop");
+        showLoop.setAttribute("id", "hideLoop");
+        showLoop.setAttribute("onClick", "hideLoop()");
+        showLoop.innerHTML="Hide Loop";
+
+    }
+
+    function hideLoop() {
+        // var hiddenText = document.getElementById("hiddenText").innerHTML="The hidden button is clicked";
+        var text = document.getElementById("text");
+        text.innerHTML="";
+        var fruitsItem = document.getElementById("fruitsItem").innerHTML='';
+
+        var hideLoop = document.getElementById("hideLoop");
+        hideLoop.setAttribute("id", "showLoop");
+        hideLoop.setAttribute("onClick", "showLoop()");
+        hideLoop.innerHTML="Show Loop";
+    }
+
+    function color() {
+        var color = document.getElementById("color");
+        // color.setAttribute("class", "colorAfter");
+        color.classList.toggle("colorBefore");
+        color.classList.toggle("colorAfter");
+    }
+    
+</script>
+</html>
